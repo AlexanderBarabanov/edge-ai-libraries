@@ -5,3 +5,12 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  # update actions used in zizmor-scan.yaml on a weekly interval
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "*"
+        patterns:
+          - ".github/workflows/zizmor-scan.yaml"
