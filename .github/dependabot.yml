@@ -3,14 +3,19 @@ version: 2
 updates:
   - package-ecosystem: gitsubmodule
     directory: "/"
+    cooldown:
+      default-days: 7
     schedule:
       interval: "weekly"
-  # update actions used in zizmor-scan.yaml on a weekly interval
+  # Update actions on a weekly interval
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    allow:
-      - dependency-name: "*"
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions-dependency:
+        applies-to: version-updates
         patterns:
-          - ".github/workflows/zizmor-scan.yaml"
+          - "*"
